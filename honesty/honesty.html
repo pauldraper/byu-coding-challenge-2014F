@@ -57,6 +57,7 @@
 
 	pre {
 		tab-size: 4;
+		display: inline;
 	}
 
 	.billboard {
@@ -66,31 +67,42 @@
 </style>
 
 <div>
+	<img src="http://imgs.xkcd.com/comics/honest.png">
 	<div class="section">
 		<h3>Description</h3>
 		<div class="paragraph">
-			What if arithmetic operator precedence were reversed? Could you handle it?
+			Fredrick and Wilhelm are secretive people. They're honest, but not <i>too</i> honest. They don't say more than they have to.
 		</div>
 		<div class="paragraph">
-			Expressions within parentheses is still evaluated first, but + and - precede * and /.
+			There are two secret numbers, <pre>a</pre> and <pre>b</pre>, where <pre>a &le; b</pre>. Fredrick was given their sum, <pre>a + b</pre>. Wilhelm was given their product, <pre>a * b</pre>.
 			<br>
-			Like with traditional arithmetic, "ties" (e.g. + and -) are evaluated in the order they appear.
+			They then had the following honest conversation.
+		</div>
+		<div class="paragraph" style="margin-left:60px">
+			<b>Wilhelm:</b> I don't know what <pre>a</pre> and <pre>b</pre> are.
+			<br>
+			<b>Fredrick:</b> I knew that.
+			<br>
+			<b>Wilhelm:</b> Now I know what they are.
+			<br>
+			<b>Fredrick:</b> I now know too.
+		</div>
+		<div class="paragraph">
+			From their conversation, can you determine what <pre>a</pre> and <pre>b</pre> could be?
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Input</h3>
 		<div class="paragraph">
-			A valid arithmetic expression, using positive decimal integers, parentheses, and the operators +, -, and *.
-			<br>
-			Intermediate values are guaranteed never to exceed +- 1,000,000,000.
+
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Output</h3>
 		<div class="paragraph">
-			The value of the expression.
+			Ouput the possible values for <pre>a</pre> and <pre>b</pre>. Use one line for each pair, and separate the numbers by a space.
 		</div>
 	</div>
 
@@ -101,10 +113,10 @@
 		</tr>
 		<tr>
 			<td>
-<pre>2 * 1 + 1</pre>
+<pre></pre>
 			</td>
 			<td>
-<pre>(20) * (2 + 1) + 1</pre>
+<pre></pre>
 			</td>
 		</tr>
 		<tr>
@@ -113,13 +125,11 @@
 		</tr>
 		<tr>
 			<td>
-<pre>4</pre>
+<pre>4 13</pre>
 			</td>
 			<td>
-<pre>80</pre>
+<pre></pre>
 			</td>
 		</tr>
 	</table>
 </div>
-
-Use stacks.
