@@ -1,0 +1,136 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+</style>
+
+<div>
+	<div class="section">
+		<h1>Sudoku</h1>
+	</div>
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			In Sudoku, the objective is to fill a <tt>9&#215;9</tt> grid with digits so that each column, each row, and each of the nine <tt>3&#215;3</tt> boxes that compose the grid contains all of the digits from <tt>1</tt> to <tt>9</tt>. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a unique solution.
+		</div>
+		<div class="paragraph">
+			Given a sudoku board with one empty square, can you find the last number?
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+		<div class="paragraph">
+			The first line will be a number <tt>n &lt; 10,000</tt>. <tt>n</tt> sudoku boards follow.
+		</div><div class="paragraph">
+			A sudoku board is a line with 81 characters. The board will have numbers <tt>[1-9]</tt>, and one <tt>x</tt> for the empty space.
+
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			The number that completes the board, or <tt>invalid</tt> if the board is not valid.
+		</div>
+	</div>
+
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>1
+12367894558423976196714532837246158969158327445879x613836924157219857436745316892</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>2</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>2
+915738264246591738378426951169352847832674195457819623x94287316723165489681943572
+1234367899647185325873294163126749586758912438492x5167231567894758945621496182375</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>5
+invalid</pre>
+			</td>
+		</tr>
+	</table>
+</div>
