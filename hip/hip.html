@@ -1,0 +1,156 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+		display: inline;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+</style>
+
+<div>
+	<div class="section">
+		<h1>Hip</h1>
+	</div>
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			The Game of Hip is a 2 player game created by Martin Gardner in 1960, so named because of hipsters' reputed disdain for 'squares.' It is played on a checkerboard as follows:
+		</div>
+		<div class="paragraph">
+			Each player has different colored pieces. They take turns placing a single piece on any vacant cell of the board. Each tries to avoid placing his pieces so that four of them mark the corners of a square. The square may be any size and tipped at any angle. A player wins when his opponent becomes a 'square' by forming a square with his pieces.
+		</div>
+		<div class="paragraph">
+			It has been shown that for a 6&#215;6 board and smaller there is possibility of a tie, however for 7&#215;7 and larger it is not possible to tie. For a 6&#215;6 board there are 105 different possible squares.
+		</div>
+		<div class="paragraph">
+			In 2014 things have changed for hipsters, and now they actually like squares. They have changed the game to allow more players. The winner is the player with the most squares on the board once there are no tiles left. Their problem is that it is difficult for them to count up how many squares they each have, so they need your help. Given a board with tiles on it, you need to tell them how many squares each color has.
+		</div>
+		<img src="hip.png">
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+		<div class="paragraph">
+		The first line will contain a number <pre>t</pre>, <pre>t</pre> test cases will follow.
+		</div><div class="paragraph">
+			Each test case begins with a line containing two integers <pre>P (1 &lt;= P &lt; 10)</pre>, and <pre>N (3 &lt;= N &lt;= 16)</pre> separated by a single space. Where <pre>P</pre> is the number of players and <pre>N</pre> represents the size of the board <pre>(N&#215;N)</pre>. The next line will have <pre>N^2</pre> characters representing the board. The board will contain characters the first <pre>P</pre> lowercase letters of the alphabet, with empty spaces represented by a <pre>-</pre>. 
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			For each player print a line with the letter on their tile and the number of squares they have on the board, seperated by a space. Print them highest score to lowest, breaking ties alphabetically.
+		</div>
+	</div>
+	<div class="section">
+		<h3>Examples</h3>
+	</div>
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>1
+1 6
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>a 105</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>2
+2 3
+abab-baba
+3 4
+aaddaaddcca-dc-c</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>a 1
+b 1
+a 1
+d 1
+b 0
+c 0</pre>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<!-- 4 8 -->
+<!-- ababdccbdcdcbadcdcdaaacabddadaabadacbcbdbdbbdcacdabcaacbdbccdbbc -->
