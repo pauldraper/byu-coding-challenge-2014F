@@ -6,17 +6,14 @@ using namespace std;
 
 int main() {
 	string state;
-	getline(cin, state);
-
 	int numMinutes, numViruses;
-	cin >> numMinutes >> numViruses;
+	cin >> state >> numMinutes >> numViruses;
 
 	map<char,string> rules;
 	for(int i = 0; i < numViruses; i++) {
 		char c;
 		cin >> c;
-		cin.ignore();
-		getline(cin, rules[c]);
+		cin >> rules[c];
 	}
 
 	map<char,long long> numbers;
