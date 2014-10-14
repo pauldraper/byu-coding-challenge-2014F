@@ -67,16 +67,16 @@
 </style>
 
 <div>
-	<img src="http://imgs.xkcd.com/comics/honest.png">
+	<img src="http://imgs.xkcd.com/comics/honest.png" title="I didn't understand what you meant. I still don't. But I'll figure it out soon!" alt="Honest">
 	<div class="section">
 		<h3>Description</h3>
 		<div class="paragraph">
 			Fredrick and Wilhelm are secretive people. They're honest, but not <i>too</i> honest. They don't say more than they have to.
 		</div>
 		<div class="paragraph">
-			There are two secret numbers, <pre>a</pre> and <pre>b</pre>, where <pre>a &le; b</pre>. Fredrick was given their sum, <pre>a + b</pre>. Wilhelm was given their product, <pre>a * b</pre>.
+			Their friend Leopold tells them that he is thinking of two integers <pre>a</pre> and <pre>b</pre>, such that <pre>L &le; a &le; b &le; U</pre>. He says he will Fredick the sum <pre>a + b</pre> and Wilhelm the product <pre>a * b</pre>. He then privately gives them the sum and product.
 			<br>
-			They then had the following honest conversation.
+			They then have the following honest conversation.
 		</div>
 		<div class="paragraph" style="margin-left:60px">
 			<b>Wilhelm:</b> I don't know what <pre>a</pre> and <pre>b</pre> are.
@@ -88,12 +88,17 @@
 			<b>Fredrick:</b> I now know too.
 		</div>
 		<div class="paragraph">
-			From their conversation, can you determine what <pre>a</pre> and <pre>b</pre> could be?
+			What are the possible values for <pre>a</pre> and <pre>b</pre>?
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Input</h3>
+			<div class="paragraph">
+				Input is two lines. The first line is the integer <pre>L</pre>, and the second line is the integer <pre>U</pre>.
+				<br>
+				<pre>2 &le; L &le; U &le; 1000</pre>
+			</div>
 		<div class="paragraph">
 
 		</div>
@@ -102,7 +107,7 @@
 	<div class="section">
 		<h3>Output</h3>
 		<div class="paragraph">
-			Ouput the possible values for <pre>a</pre> and <pre>b</pre>. Use one line for each pair, and separate the numbers by a space.
+			Ouput the possible values for <pre>a</pre> and <pre>b</pre>. Use one line for each pair, and separate the numbers in pair by a single space.
 		</div>
 	</div>
 
