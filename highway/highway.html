@@ -1,0 +1,135 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+		display: inline;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+
+	.xkcd {
+		float: right;
+		margin: 30px;
+	}
+</style>
+
+<div>
+	<div class="section">
+		<h1>Highway</h1>
+	</div>
+	<img class='xkcd' src="http://imgs.xkcd.com/comics/ahead_stop.png" title="They actually started the reversed-text practice in 1977 -- not for ease-of-reading reasons, but because too many people were driving backward down the highway blasting the Star Wars opening theme." alt="Ahead Stop">
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			Since highway engineers think we read backward, we need your help to translate words painted on the road into readable sentences.
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+		<div class="paragraph">
+		The first line will contain a number <pre>n</pre>, the number of lines printed on the highway.
+		</div><div class="paragraph">
+			The next <pre>n</pre> lines will contain text as it is printed on the highway.
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			Output a single line with the sentence in readable order.
+		</div>
+	</div>
+	<div class="section">
+		<h3>Examples</h3>
+	</div>
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>5
+backward.
+I read
+think
+engineers
+Highway</pre>
+			</td>
+			<td><pre>2
+ahead
+Stop</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+			<pre>Highway engineers think I read backward.</pre>
+			</td>
+			<td>
+			<pre>Stop ahead</pre>
+			</td>
+		</tr>
+	</table>
+</div>
