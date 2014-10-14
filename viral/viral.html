@@ -1,0 +1,184 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+		display: inline;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+</style>
+
+<div>
+	<img src="http://imgs.xkcd.com/comics/network.png" title="Viruses so far have been really disappointing on the 'disable the internet' front, and time is running out.  When Linux/Mac win in a decade or so the game will be over." alt="Network">
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			In group of networked Windows computers, there are several viruses. Existing viruses exploit vunerabilities that cause them to profilate, and can even help spawn other viruses.
+		</div>
+		<div class="paragraph">
+			Each type of virus is represented by a capital letter A-Z.
+		</div>
+		<div class="paragraph">
+			Each minute, a virus is replaced by zero or more viruses. For example, suppose there were two types of virus, A and B, that obeyed the following rules:
+		</div>
+<pre style="display:block;margin:auto;width:100px">A -> AB
+B -> A</pre>
+		<div class="paragraph">
+			Starting with one virus, A, three minutes of growth looks like this:
+		</div>
+<pre style="display:block;margin:auto;width:100px">      A
+     / \
+    A   B
+   / \   \
+  A   B   A
+ / \  |  / \
+A   B A A   B</pre>
+		<div class="paragraph">
+			At zero minutes, there is exactly 1 virus. After three minutes there are a total of 5. 
+		</div>
+		<div class="paragraph">
+			Virius can die out. For example, if you start with C, and its growth rule is <pre>C -></pre>, after one minute, there are no viruses at all.
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+			<div class="paragraph">
+				The first line is a sequence of one or more captial letters, representing the viruses at the beginning.
+				<br>
+				The second line is <pre>M</pre> the integer number of minutes. <pre>1 &le; M &le; 60</pre>
+				<br>
+				The third line is <pre>N</pre>, the number of types of viruses. <pre>1 &le; N &le; 26</pre>
+				<br>
+				The next <pre>N</pre> lines are the growth rules for the viruses. The first character is a capital letter, corrsponding to the virus at the beginning of the rule. There is exactly one rule for each virus.
+				<br>
+				Then there is a space, followed by at most forty captial letters, corresponding to the viruses at the end of the rule.
+			</div>
+		<div class="paragraph">
+
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			Output the number of viruses at the end of the specified period of time. At any stage of growth, there will never be more than one quintillion (1,000,000,000,000,000,000) viruses.
+		</div>
+	</div>
+
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+			<th>Input</th>
+			<th>Input</th>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>A
+3
+2
+A AB
+B A</pre>
+			</td>
+			<td>
+<pre>C
+2
+1
+C </pre>
+			</td>
+			<td>
+<pre>Z
+0
+1
+Z ZZ</pre>
+			</td>
+			<td>
+<pre>A
+60
+3
+A AB
+C A
+B AC</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+			<th>Output</th>
+			<th>Output</th>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>5</pre>
+			</td>
+			<td>
+<pre>0</pre>
+			</td>
+			<td>
+<pre>1</pre>
+			</td>
+			<td>
+<pre>8607945812375585</pre>
+			</td>
+		</tr>
+	</table>
+</div>
