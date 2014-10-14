@@ -1,0 +1,142 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+		display: inline;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+</style>
+
+<div>
+	<img src="http://imgs.xkcd.com/comics/iso_8601.png" title="ISO 8601 was published on 06/05/88 and most recently amended on 12/01/04." alt="ISO 8601">
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			Convert a "Roman date" to ISO 8601.
+		</div>
+		<div class="paragraph">
+			Roman numerals are composed of a non-empty sequence of symbols, where each symbol has a value:
+				M - 1000
+				D - 500
+				C - 100
+				L - 50
+				X - 10
+				V - 5
+				I - 1
+		</div>
+		<div class="paragraph">
+			Typically, the value of Roman symbols are written in descending order, and summed. For example <pre>MCII</pre> is 1002. If, however, a symbol comes anywhere before a symbol of greater value, it subtracts from, rather than adds to the total. So <pre>CMII</pre> is 902.
+		</div>
+		<div class="paragraph">
+			There's no universal convention for writing Roman numerals. For example IV is typical for 4, though clocks usually use IIII.
+			<br>
+			Because of these inconsistencies, we won't put any other restrictions on the numerals. So <pre>LIMIL</pre> is allowed. It's value is <pre>- 50 - 1 + 1000 - 1 + 50 = 998</pre>
+		</div>
+		<div class="paragraph">
+			Both roman dates and ISO 8601 dates are written as YYYY-MM-DD.
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+			<div class="paragraph">
+				Input is a roman date from I-I-I to MMMMM-XII-XXXI inclusive.
+			</div>
+		<div class="paragraph">
+
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			Output the ISO 8601 form of the date.
+		</div>
+	</div>
+
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>MMXIII-II-XXVII</pre>
+			</td>
+			<td>
+<pre>XLMLMCXIXV-X-VXXL</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>2013-02-27</pre>
+			</td>
+			<td>
+<pre>2014-10-25</pre>
+			</td>
+		</tr>
+	</table>
+</div>
