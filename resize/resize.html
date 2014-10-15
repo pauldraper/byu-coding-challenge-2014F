@@ -64,17 +64,9 @@
 		line-height: 1em;
 		outline: solid 1px black;
 	}
-
-	.xkcd {
-		float: right;
-		margin: 30px;
-	}
 </style>
 
 <div>
-	<div class="section">
-		<h1>Resize</h1>
-	</div>
 	<img class='xkcd' src="http://imgs.xkcd.com/comics/aspect_ratio.png" title="I'm always disappointed when 'Anamorphic Widescreen' doesn't refer to a widescreen Animorphs movie." alt="Aspect Ratio">
 	<div class="section">
 		<h3>Description</h3>
@@ -83,8 +75,8 @@
 		</div>
 		<div class="paragraph">
 			Consider the following examples with a minimum row-height of 20 and a minimum col-width of 30:
-			<img src="table_small.png" width="500px" height="181px">
-			<img src="table_large.png" width="620px" height="192px">
+			<img src="http://www.spoj.com/content/byuadmin:table1.png" width="500px" height="181px" style="margin-top:10px;">
+			<img src="http://www.spoj.com/content/byuadmin:table2.png" width="620px" height="192px" style="margin-top:10px;">
 		</div>
 	</div>
 
@@ -93,7 +85,7 @@
 		<div class="paragraph">
 			The first line will contain an integer <pre>t</pre>, <pre>t</pre> test cases will then follow.
 		</div><div class="paragraph">
-			Each test case will start with a line with two integers, <pre>r</pre> and <pre>c</pre> where <pre>r</pre> is the number of rows, and <pre>c</pre> is the number of columns.
+			Each test case will start with a line with two integers, <pre>r</pre> and <pre>c</pre> where <pre>r</pre> is the number of rows, and <pre>c</pre> is the number of columns. Where <pre>1 &lt;= r,c &lt;=1,000,000</pre>
 		</div>
 		<div class="paragraph">
 			The second line with contain <pre>r</pre> numbers representing the row-heights of each row. The third line will contain <pre>c</pre> numbers representing the column-widths of each column.
@@ -101,6 +93,7 @@
 		<div class="paragraph">
 			The fourth line will contain 4 numbers, <pre>min-row</pre>, <pre>min-col</pre>, <pre>height</pre>, and <pre>width</pre>. Where <pre>min-row</pre> is the minimum row-height, <pre>min-col</pre> is the minimum column width, <pre>height</pre> is the desired final height, and <pre>width</pre> is the desired final width.
 		</div>
+	</div>
 
 	<div class="section">
 		<h3>Output</h3>

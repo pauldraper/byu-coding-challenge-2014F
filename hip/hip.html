@@ -73,11 +73,8 @@
 
 <div>
 	<div class="section">
-		<h1>Hip</h1>
-	</div>
-	<img class='xkcd' src="http://imgs.xkcd.com/comics/puzzle.png" title="Prediction for Carlsen v. Anand: ... 25. Qb8+ Nxb8 26. Rd8# f6 27. &quot;... dude.&quot; Qf5 28. &quot;The game is over, dude.&quot; Qxg5 29. Rxe8 0-1 30. &quot;Dude, your move can't be '0-1'. Don't write that down.&quot; [Black flips board]" alt="Puzzle">
-	<div class="section">
 		<h3>Description</h3>
+		<img class='xkcd' src="http://imgs.xkcd.com/comics/puzzle.png" title="Prediction for Carlsen v. Anand: ... 25. Qb8+ Nxb8 26. Rd8# f6 27. &quot;... dude.&quot; Qf5 28. &quot;The game is over, dude.&quot; Qxg5 29. Rxe8 0-1 30. &quot;Dude, your move can't be '0-1'. Don't write that down.&quot; [Black flips board]" alt="Puzzle">
 		<div class="paragraph">
 			Many games, like chess and Go!, are based on square grids. Hip is no exception, but it adds a unique twist (literally).
 		</div>
@@ -93,7 +90,7 @@
 		<div class="paragraph">
 			In 2014 things have changed for hipsters, and now they actually like squares. They have changed the game to allow more players. The winner is the player with the most squares on the board once there are no tiles left. Their problem is that it is difficult for them to count up how many squares they each have, so they need your help. Given a board with tiles on it, you need to tell them how many squares each color has.
 		</div>
-		<img src="hip.png">
+		<img src="http://www.spoj.com/content/byuadmin:hip.png">
 	</div>
 
 	<div class="section">
@@ -102,6 +99,7 @@
 		The first line will contain a number <pre>t</pre>, <pre>t</pre> test cases will follow.
 		</div><div class="paragraph">
 			Each test case begins with a line containing two integers <pre>P (1 &lt;= P &lt; 10)</pre>, and <pre>N (3 &lt;= N &lt;= 60)</pre> separated by a single space. Where <pre>P</pre> is the number of players and <pre>N</pre> represents the size of the board <pre>(N&#215;N)</pre>. The next line will have <pre>N^2</pre> characters representing the board. The board will contain characters from the first <pre>P</pre> lowercase letters of the alphabet, with empty spaces represented by a <pre>-</pre>. 
+			</div>
 	</div>
 
 	<div class="section">
@@ -116,6 +114,7 @@
 	<table class="section example-table">
 		<tr>
 			<th>Input</th>
+			<th>Input</th>
 		</tr>
 		<tr>
 			<td>
@@ -123,19 +122,6 @@
 1 6
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</pre>
 			</td>
-		</tr>
-		<tr>
-			<th>Output</th>
-		</tr>
-		<tr>
-			<td>
-			<pre>a 105</pre>
-			</td>
-		</tr>
-		<tr>
-			<th>Input</th>
-		</tr>
-		<tr>
 			<td>
 			<pre>2
 2 3
@@ -146,8 +132,12 @@ aaddaaddcca-dc-c</pre>
 		</tr>
 		<tr>
 			<th>Output</th>
+			<th>Output</th>
 		</tr>
 		<tr>
+			<td>
+			<pre>a 105</pre>
+			</td>
 			<td>
 			<pre>a 1
 b 1
