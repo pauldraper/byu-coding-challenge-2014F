@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hip Solution</title>
+	<script type="text/javascript">
+	function getOutput(input){
+		var lines = input.split('\n');
+		var begin = Date.now();
+		for(var i=1; i<lines.length; i+=2){
+			var players = parseInt(lines[i].split(' ')[0], 10);
+			var size = parseInt(lines[i].split(' ')[1], 10);
+			var start = Date.now();
+			var output = squares(players, size, lines[i+1]);
+			var time = Date.now() - start;
+			console.log(output, time/1000, (lines.length-1)/2, (i+1)/2);
+		}
+		console.log((Date.now() - begin)/1000);
+	}
+
+
+	function squares(players, size, board){
+		function l(x, y){
+			if(x<0 || y<0 || x>=size || y>=size){
+				return false;
+			}
+			var i = size*y+x;
+			if(i >=0 && i < board.length)
+				return board[i];
+		}
+
+		function x(i){
+			return i%size;
+		}
+		function y(i){
+			return Math.floor(i/size);
+		}
+
+		function square(x1,y1,x2,y2,x3,y3,x4,y4){
+			var s = [];
+			s.push(
+				size*y1 + x1,
+				size*y2 + x2,
+				size*y3 + x3,
+				size*y4 + x4
+			);
+			s.sort();
+			return s.toString();
+		}
+
+		function printSquare(s){
+			var temp = board.split('');
+			s.forEach(function(i){
+				temp[i] = 'x';
+			});
+			temp = temp.join('');
+			var bo = '';
+			for(var i=0; i<size; i++){
+				bo+=temp.substr(i*size,size) + '\n';
+			}
+			console.log(bo);
+		}
+
+		var set = {};
+
+		for(var i=0; i<size*size; i++){
+			for(var j=i+1; j<size*size; j++){
+				if(board[i] == board[j]){
+					var x1 = x(i);
+					var y1 = y(i);
+					var x2 = x(j);
+					var y2 = y(j);
+
+					var dx = x1 - x2;
+					var dy = y1 - y2;
+
+					if(l(x1-dy,y1+dx)==board[i] && l(x2-dy,y2+dx)==board[i]){
+						var s = square(x1,y1,x2,y2,x1-dy,y1+dx,x2-dy,y2+dx);
+						if(!set[s]){
+							set[s] = s;
+						}
+					}
+					if(l(x1+dy,y1-dx)==board[i] && l(x2+dy,y2-dx)==board[i]){
+						var s = square(x1,y1,x2,y2,x1+dy,y1-dx,x2+dy,y2-dx);
+						if(!set[s]){
+							set[s] = s;
+						}
+					}
+				}
+			}
+		}
+
+		var scores = {};
+		for(var i=0; i<players; i++){
+			scores['abcdefghij'[i]] = 0;
+		}
+		for(var s in set){
+			var p = board[parseInt(s.split(',')[0])];
+			if(p in scores){
+				scores[p]++;
+			}
+		}
+		var sorted = [];
+		for(var key in scores){
+			sorted.push({player:key,score:scores[key]});
+		}
+		sorted.sort(function(a,b){
+			if(a.score - b.score != 0){
+				return b.score-a.score;
+			}
+			if(a.player < b.player){
+				return -1;
+			}
+			return 1;
+		});
+		return sorted.map(function(s){
+			return s.player + ' ' + s.score;
+		}).join('\n');
+	}
+
+	function randomBoard(size, p, empty, r){
+		var players = 'abcdefghij';
+		var pieces = [];
+		var skip = 0;
+		var skipAny = p > 4 ? Math.random() < 0.25 : false;
+		if(skipAny){
+			skip = Math.floor(Math.random()*p);
+		}
+		for(var i=0; i<size*size; i++){
+			if(Math.random() < empty){
+				pieces.push('-');
+			} else{
+				var choice = r ? Math.floor(Math.random()*p) : i%p;
+				while(skipAny && choice==skip) {
+					i++;
+					choice = r ? Math.floor(Math.random()*p) : i%p;
+				}
+				pieces.push(players[choice]);
+			}
+		}
+		function shuffle(o){ //v1.0
+		    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+		    return o;
+		};
+		return shuffle(pieces).join('');
+	}
+
+	function generateProblems(n){
+		var input = [];
+		var output = [];
+		input.push(n);
+		for(var i=0; i<n; i++){
+			var size = Math.floor(Math.random()*56)+5;
+			var players = Math.floor(Math.random()*10)+1;
+			players = Math.min(players, Math.floor(size/3));
+			input.push(players +' '+ size);
+			var board = randomBoard(size, players, Math.random() < 0.5 ? Math.random()/4 : 0, Math.random() < 0.5);
+			input.push(board);
+			console.log(players,size,'...');
+			output.push(squares(players, size, board));
+			console.log((i+1)+'/'+n);
+		}
+
+		return {input:input, output:output};
+	}
+	function solve(){
+		getOutput(document.getElementById('input').value);
+	}
+	</script>
+</head>
+<body>
+<textarea id='input' style="width:100%;height:500px;" placeholder="put input here. Open console before pressing solve to see output."></textarea>
+<button onclick="solve()">solve</button>
+</body>
+</html>
