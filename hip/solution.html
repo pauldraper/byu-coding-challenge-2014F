@@ -18,90 +18,45 @@
 	}
 
 
-	function squares(players, size, board){
-		function l(x, y){
-			if(x<0 || y<0 || x>=size || y>=size){
-				return false;
-			}
-			var i = size*y+x;
-			if(i >=0 && i < board.length)
-				return board[i];
-		}
-
-		function x(i){
-			return i%size;
-		}
-		function y(i){
-			return Math.floor(i/size);
-		}
-
-		function square(x1,y1,x2,y2,x3,y3,x4,y4){
-			var s = [];
-			s.push(
-				size*y1 + x1,
-				size*y2 + x2,
-				size*y3 + x3,
-				size*y4 + x4
-			);
-			s.sort();
-			return s.toString();
-		}
-
-		function printSquare(s){
-			var temp = board.split('');
-			s.forEach(function(i){
-				temp[i] = 'x';
+	function squares(players, size, boardString){
+		var board = boardString.match(new RegExp('.{'+size+'}','g')).map(function(row){
+			return row.split('').map(function(c){
+				return c.charCodeAt(0);
 			});
-			temp = temp.join('');
-			var bo = '';
-			for(var i=0; i<size; i++){
-				bo+=temp.substr(i*size,size) + '\n';
-			}
-			console.log(bo);
+		});
+
+		var empty = '-'.charCodeAt(0);
+		var scores = {};
+		for(var i=0; i<players; i++){
+			scores[i+'a'.charCodeAt(0)] = 0;
 		}
-
-		var set = {};
-
-		for(var i=0; i<size*size; i++){
-			for(var j=i+1; j<size*size; j++){
-				if(board[i] == board[j]){
-					var x1 = x(i);
-					var y1 = y(i);
-					var x2 = x(j);
-					var y2 = y(j);
-
-					var dx = x1 - x2;
-					var dy = y1 - y2;
-
-					if(l(x1-dy,y1+dx)==board[i] && l(x2-dy,y2+dx)==board[i]){
-						var s = square(x1,y1,x2,y2,x1-dy,y1+dx,x2-dy,y2+dx);
-						if(!set[s]){
-							set[s] = s;
-						}
-					}
-					if(l(x1+dy,y1-dx)==board[i] && l(x2+dy,y2-dx)==board[i]){
-						var s = square(x1,y1,x2,y2,x1+dy,y1-dx,x2+dy,y2-dx);
-						if(!set[s]){
-							set[s] = s;
+		for(var x1=0; x1<size; x1++){
+			for(var y1=0; y1<size; y1++){
+				if(board[y1][x1] != empty){
+					for(var x2 = y1==size-1 ? x1+1:x1; x2<size; x2++){
+						for(var y2 = x2>x1 ? 0 : y1+1; y2<size; y2++){
+							if(board[y2][x2] == board[y1][x1]){
+								var dx = x1 - x2;
+								var dy = y1 - y2;
+								var x3 = x1+dy,
+									y3 = y1-dx,
+									x4 = x2+dy,
+									y4 = y2-dx;
+								if(x3 < 0 || x3 >= size || y3 < 0 || y3 >= size || x4 < 0 || x4 >= size || y4 < 0 || y4 >= size){
+									continue;
+								}
+								if(board[y3][x3]==board[y1][x1] && board[y4][x4]==board[y1][x1]){
+									scores[board[y1][x1]]++;
+								}
+							}
 						}
 					}
 				}
 			}
 		}
-
-		var scores = {};
-		for(var i=0; i<players; i++){
-			scores['abcdefghij'[i]] = 0;
-		}
-		for(var s in set){
-			var p = board[parseInt(s.split(',')[0])];
-			if(p in scores){
-				scores[p]++;
-			}
-		}
 		var sorted = [];
 		for(var key in scores){
-			sorted.push({player:key,score:scores[key]});
+			sorted.push({player:key,score:scores[key]/2});
 		}
 		sorted.sort(function(a,b){
 			if(a.score - b.score != 0){
@@ -113,7 +68,7 @@
 			return 1;
 		});
 		return sorted.map(function(s){
-			return s.player + ' ' + s.score;
+			return String.fromCharCode(s.player) + ' ' + s.score;
 		}).join('\n');
 	}
 
@@ -131,8 +86,11 @@
 			} else{
 				var choice = r ? Math.floor(Math.random()*p) : i%p;
 				while(skipAny && choice==skip) {
-					i++;
-					choice = r ? Math.floor(Math.random()*p) : i%p;
+					if(r){
+						choice = Math.floor(Math.random()*p);
+					} else {
+						choice++;
+					}
 				}
 				pieces.push(players[choice]);
 			}
@@ -141,6 +99,10 @@
 		    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 		    return o;
 		};
+		if(pieces.length != size*size){
+			debugger;
+		}
+		console.log(pieces.length, size*size);
 		return shuffle(pieces).join('');
 	}
 
@@ -149,7 +111,7 @@
 		var output = [];
 		input.push(n);
 		for(var i=0; i<n; i++){
-			var size = Math.floor(Math.random()*56)+5;
+			var size = Math.floor(Math.random()*96)+5;
 			var players = Math.floor(Math.random()*10)+1;
 			players = Math.min(players, Math.floor(size/3));
 			input.push(players +' '+ size);
