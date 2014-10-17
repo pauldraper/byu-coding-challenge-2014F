@@ -1,0 +1,147 @@
+<style>
+	.center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.center-text {
+		text-align: center ! important;
+	}
+
+	.example-table {
+		margin-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+
+	.example-table td {
+		max-width: 0;
+		word-wrap: break-word;
+		vertical-align: top; 
+	}
+
+	.example-table .vertical-spacer {
+		height: 5px;
+	}
+
+	.inline {
+		display: inline;
+	}
+
+	.section {
+		margin-top: 19px;
+		margin-bottom:19px;
+	}
+
+	.section:first-child, .section:first-child > h3:first-child {
+		margin-top: 0;
+	}
+
+	.paragraph {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+
+	.paragraph ul, .paragraph pre {
+		margin-top: 3px;
+		margin-bottom: 3px;
+	}
+
+	ul.padded > li, ol.padded > li {
+		margin-bottom: 13px;
+	}
+	ul.padded > li:last-child, ol.padded > li:last-child {
+		margin-bottom: 0;
+	}
+
+	pre {
+		tab-size: 4;
+	}
+
+	.billboard {
+		line-height: 1em;
+		outline: solid 1px black;
+	}
+</style>
+
+<div>
+	<img src="http://imgs.xkcd.com/comics/still_raw.png" title="We actually divorced once over the airplane/treadmill argument.  (Preemptive response to the inevitable threads arguing about it:  you're all wrong on the internet.)" alt="Still Raw">
+	<div class="section">
+		<h3>Description</h3>
+		<div class="paragraph">
+			A cryptogram is a game consisting of a mathematical equation among unknown numbers, whose digits are represented by letters. The goal is to identify the value of each letter.
+			The classic example is:
+			<pre>   SEND
++  MORE
+-------
+= MONEY</pre> where the solution is <tt>O = 0, M = 1, Y = 2, E = 5, N = 6, D = 7, R = 8, and S = 9 (9567+1085=10652).</tt>
+		</div>
+		<div class="paragraph">
+			Each letter represents a different diget, and the leading digit of a multi-digit number cannot be zero. A good cryptogram puzzle should have a unique solution, and the letters should make up a phrase. In contrast to those who say Pluto should not have been a planet we have the following cryptogram: <tt>NEPTUNE+SATURN+URANUS+PLUTO=PLANETS (3947539+127503+502351+46578=4623971)</tt>
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Input</h3>
+		<div class="paragraph">
+			The first line will be a number <tt>t &lt; 10,000</tt>. <tt>t</tt> cryptograms follow.
+		</div><div class="paragraph">
+			Each cryptogram will be on its own line as a space separated list of <tt>n</tt> words with the last word being the sum of the previous words. Words will contain letters from the alphabet and are case sensitive.
+		</div>
+	</div>
+
+	<div class="section">
+		<h3>Output</h3>
+		<div class="paragraph">
+			Print out the problem as an equation, then the solution in parenthesis, separated by a space. If there is no solution print <tt>no solution</tt>. Every cryptogram will have either 0 or 1 solutions.
+		</div>
+	</div>
+
+	<table class="section example-table">
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>2
+SEND MORE MONEY
+NEPTUNE SATURN URANUS PLUTO PLANETS</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>SEND+MORE=MONEY (9567+1085=10652)
+NEPTUNE+SATURN+URANUS+PLUTO=PLANETS (3947539+127503+502351+46578=4623971)</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Input</th>
+		</tr>
+		<tr>
+			<td>
+<pre>4
+BYU ACM IS REALLY AWESOME
+ALPHABET LETTERS SCRABBLE
+WE LIKE TO EAT PIZZA
+SEVEN SIX SEVEN TWENTY
+</pre>
+			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+		</tr>
+		<tr>
+			<td>
+<pre>no solution
+ALPHABET+LETTERS=SCRABBLE (17531908+7088062=24619970)
+no solution
+SEVEN+SIX+SEVEN=TWENTY (68782+650+68782=138214)
+</pre>
+			</td>
+		</tr>
+	</table>
+</div>
