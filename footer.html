@@ -84,6 +84,16 @@
       });
   }
 
+  //remove jobs widget
+  var removeWidget = setInterval(function(){
+    var jobWidget = $('#rcv4_widget');
+    if(jobWidget.length > 0){
+      jobWidget.remove();
+      clearInterval(removeWidget);
+      console.log('removed');
+    }
+  }, 10);
+
   // problem title
 	var title = $('td > h2 + h1');
 	title.text(title.text().split(' ').slice(1).join(' '));
@@ -99,7 +109,7 @@
 
 <span style="font-size:16px">
 	Sponsored by
-	<a target="blank" href="http://career.epic.com">
-		<img src="/BYU2014W/content/epic.png" style="height:25px;vertical-align:middle">
+	<a target="blank" href="https://www.golucid.co/jobs">
+		<img src="/BYU2014F/content/lucid.png" style="height:25px;vertical-align:middle">
 	</a>
 </span>
