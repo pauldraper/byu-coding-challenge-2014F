@@ -126,7 +126,7 @@
 				<path class="obstacle" d="M 0 2 L 1 1 L 2 2 L 3 1 L 2 1 L 1 0 L -1 -1 L -3 -3 L -1 0 L -3 3 Z" vector-effect="non-scaling-stroke"/>
 			</g>
 		</svg>
-		<img src="http://imgs.xkcd.com/comics/tasks.png" title="In the 60s, Marvin Minsky assigned a couple of undergrads to spend the summer programming a computer to use a camera to identify objects in a scene. He figured they'd have the problem solved by the end of the summer. Half a century later, we're still working on it." alt="Tasks" style="height:300px;margin-left:20px">
+		<img src="http://imgs.xkcd.com/comics/tasks.png" title="In the 60s, Marvin Minsky assigned a couple of undergrads to spend the summer programming a computer to use a camera to identify objects in a scene. He figured they'd have the problem solved by the end of the summer. Half a century later, we're still working on it." alt="Tasks" style="height:300px;margin-left:90px">
 	</div>
 
 	<div class="section">
@@ -149,7 +149,7 @@
 	<div class="section">
 		<h3>Output</h3>
 		<div class="paragraph">
-			Output <pre>YES</pre> if you inside the park, <pre>NO</pre> if you are not in the park, and <pre>HALFSIES</pre> if you are on the boundary.
+			Output <pre>YES</pre> if you inside the park, <pre>NO</pre> if you are not in the park. You will never be on a boundary.
 		</div>
 	</div>
 
@@ -160,6 +160,14 @@
 			<th>Input</th>
 		</tr>
 		<tr>
+			<td>
+<pre>0 0
+4
+-1 -1
+-1 1
+1 1
+1 -1</pre>
+			</td>
 			<td>
 <pre>0 0
 10
@@ -188,29 +196,20 @@
 -1 0
 -3 3</pre>
 			</td>
+		</tr>
+		<tr>
+			<th>Output</th>
+			<th>Output</th>
+			<th>Output</th>
+		</tr>
 			<td>
-<pre>1 0
-4
--1 -1
--1 1
-1 1
-1 -1</pre>
+		YES</pre>
 			</td>
-		</tr>
-		<tr>
-			<th>Output</th>
-			<th>Output</th>
-			<th>Output</th>
-		</tr>
-		<tr>
 			<td>
 <pre>YES</pre>
 			</td>
 			<td>
 <pre>NO</pre>
-			</td>
-			<td>
-<pre>HALFSIES</pre>
 			</td>
 		</tr>
 	</table>
