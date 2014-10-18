@@ -1,10 +1,5 @@
-package hip;
-
 import java.util.*;
 
-/**
- * Created by ryan on 10/17/14.
- */
 public class Main {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
