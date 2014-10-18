@@ -1,5 +1,3 @@
-package resize;
-
 import java.util.*;
 
 public class Main {
