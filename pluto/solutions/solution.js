@@ -23,7 +23,7 @@ var arithmetic = function(words){
 
 	var answers = solve(conditions, lowest, 0, {}, [false,false,false,false,false,false,false,false,false,false], 0);
 	if(answers.length == 1){
-		answer = answer[0];
+		answer = answers[0];
 		var numbers = words.map(function(word, i){
 			return word.split('').map(function(letter){
 				return answer[letter];
@@ -32,6 +32,7 @@ var arithmetic = function(words){
 		return numbers;
 	}
 	if(answers.length > 1){
+		return answers.length + ' solutions?!!??! ' + words.join(' ');
 		return answers.map(function(answer){
 			return words.map(function(word, i){
 				return word.split('').map(function(letter){
@@ -40,7 +41,7 @@ var arithmetic = function(words){
 			}).join('');
 		}).join('\n');
 	}
-	return 'no solution';
+	return 'no solution ' + words.join(' ');
 }
 
 var solve = function(conditions, lowest, index, assigned, used, error){
