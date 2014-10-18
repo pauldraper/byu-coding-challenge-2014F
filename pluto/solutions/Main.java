@@ -1,5 +1,3 @@
-package pluto;
-
 import java.util.*;
 
 public class Main {
@@ -8,17 +6,22 @@ public class Main {
 
         int n = Integer.parseInt(scan.nextLine());
 
+        long start = System.nanoTime();
+
         for(int i=0; i<n; i++){
             String[] words = scan.nextLine().split(" ");
             HashMap<Character, Integer> lowest = new HashMap<Character, Integer>();
             int maxLen = words[0].length();
 
-            int min = 0;
-            int max = 0;
+            long min = 0;
+            long max = 0;
 
-            for(String word : words){
-                min += Math.pow(10, word.length()-1);
-                max += Math.pow(10,word.length())-1;
+            for(int j=0; j<words.length; j++){
+                String word = words[j];
+                if(j<words.length-1){
+                    min += Math.pow(10, word.length()-1);
+                    max += Math.pow(10,word.length())-1;
+                }
                 maxLen = Math.max(maxLen, word.length());
                 lowest.put(word.charAt(0), 1);
                 for(char c : word.toCharArray()){
@@ -27,13 +30,12 @@ public class Main {
                 }
             }
 
-            int minAns = (int)Math.pow(10,words[words.length-1].length()-1);
-            int maxAns = (int)Math.pow(10,words[words.length-1].length())-1;
-            min-=minAns;
-            max-=maxAns;
+            long minAns = (long)Math.pow(10,words[words.length-1].length()-1);
+            long maxAns = (long)Math.pow(10,words[words.length-1].length())-1;
+
 
             if(Math.max(min, minAns) > Math.min(max, maxAns)){
-                System.out.println("no solution"); //out of range
+               System.out.println("no solution"); //out of range
                 continue;
             }
 
@@ -41,6 +43,7 @@ public class Main {
                 System.out.println("no solution"); //too many characters.
                 continue;
             }
+
 
 
             String constraints = "";
@@ -76,6 +79,10 @@ public class Main {
             }
 
         }
+
+        long end = System.nanoTime();
+
+        System.out.println("Total time: " + (end-start));
 
     }
 
