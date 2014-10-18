@@ -31,6 +31,7 @@
 	.section {
 		margin-top: 19px;
 		margin-bottom:19px;
+		clear: both;
 	}
 
 	.section:first-child, .section:first-child > h3:first-child {
@@ -64,6 +65,11 @@
 		line-height: 1em;
 		outline: solid 1px black;
 	}
+
+	.example {
+		width: 50%;
+		float: left;
+	}
 </style>
 
 <div>
@@ -75,15 +81,15 @@
 		</div>
 		<div class="paragraph">
 			Consider the following examples with a minimum row-height of 20 and a minimum col-width of 30:
-			<img src="http://www.spoj.com/content/byuadmin:table1.png" width="500px" height="181px" style="margin-top:10px;">
-			<img src="http://www.spoj.com/content/byuadmin:table2.png" width="620px" height="192px" style="margin-top:10px;">
+			<img class="example" src="http://www.spoj.com/content/byuadmin:table1.png" style="margin-top:10px;">
+			<img class="example" src="http://www.spoj.com/content/byuadmin:table2.png" style="margin-top:10px;">
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Input</h3>
 		<div class="paragraph">
-			The first line will contain an integer <pre>t</pre>, <pre>t</pre> test cases will then follow.
+			The first line will contain an integer <pre>t (1 &lt;= t &lt;= 500)</pre>, <pre>t</pre> test cases will then follow.
 		</div><div class="paragraph">
 			Each test case will start with a line with two integers, <pre>r</pre> and <pre>c</pre> where <pre>r</pre> is the number of rows, and <pre>c</pre> is the number of columns. Where <pre>1 &lt;= r,c &lt;=1,000,000</pre>
 		</div>
@@ -98,10 +104,7 @@
 	<div class="section">
 		<h3>Output</h3>
 		<div class="paragraph">
-			For each test case you will print out two lines. The first line is be a space separated list of numbers representing the row-heights of each row. The second line is a space separated list of numbers representing the column-widths of each column.
-		</div>
-		<div class="paragraph">
-			If the desired width or height is not possible with the given minimum row and column sizes, make it as small as you can while maintaining the minimum row and column constraints.
+			Print two lines for each test case. First line is a space separated list of the row-heights in order, and the second line is for column-widths. Numbers must be acurate to <tt>0.0001</tt>. If the desired width or height is not possible with the given minimum row and column sizes, make it as small as you can while maintaining the minimum row and column constraints.
 		</div>
 	</div>
 	<div class="section">
@@ -109,6 +112,7 @@
 	</div>
 	<table class="section example-table">
 		<tr>
+			<th>Input</th>
 			<th>Input</th>
 			<th>Input</th>
 		</tr>
@@ -134,8 +138,19 @@
 60 60 60
 20 30 300 150</pre>
 			</td>
+			<td style="width:60%"><pre>2
+3 3
+30 40 50
+80 100 200
+20 10 70 45
+3 3
+200 30 300
+60 90 37
+30 30 130 350</pre>
+			</td>
 		</tr>
 		<tr>
+			<th>Output</th>
 			<th>Output</th>
 			<th>Output</th>
 		</tr>
@@ -151,6 +166,12 @@
 40 40 40
 100 100 100
 50 50 50</pre>
+			</td>
+			<td>
+			<pre>20.0 22.22222222222222 27.77777777777778
+10 11.666666666666666 23.333333333333336
+40 60 30
+112.29946524064171 168.44919786096256 69.25133689839572</pre>
 			</td>
 		</tr>
 	</table>
