@@ -6,8 +6,6 @@ public class Main {
 
         int n = Integer.parseInt(scan.nextLine());
 
-        long start = System.nanoTime();
-
         for(int i=0; i<n; i++){
             String[] words = scan.nextLine().split(" ");
             HashMap<Character, Integer> lowest = new HashMap<Character, Integer>();
@@ -79,10 +77,6 @@ public class Main {
             }
 
         }
-
-        long end = System.nanoTime();
-
-        System.out.println("Total time: " + (end-start));
 
     }
 
