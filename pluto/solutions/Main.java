@@ -82,6 +82,20 @@ public class Main {
 
     //Since we know there is only 0 or 1 solutions, we can make some pretty nice optimizations here.
     public static Map<Character,Integer> getSolution(String constraints, int index, HashMap<Character,Integer> lowest, boolean[] used, HashMap<Character, Integer> assigned, int error){
+        char c=' ';
+        while(index < constraints.length() && assigned.containsKey(c = constraints.charAt(index))){
+            if(constraints.charAt(index+1) == ' '){
+                index+=2;
+                if(assigned.get(c) != error % 10){
+                    return Collections.EMPTY_MAP;
+                }
+                error = error/10;
+            } else {
+                index++;
+                error+=assigned.get(c);
+            }
+        }
+
         if(index >= constraints.length()){
             if(error == 0){
                 return new HashMap<Character, Integer>(assigned);
@@ -90,12 +104,9 @@ public class Main {
             }
         }
 
-        char c = constraints.charAt(index);
 
         if(constraints.charAt(index+1) == ' '){
-            if(assigned.containsKey(c) && assigned.get(c) == error % 10){
-                return getSolution(constraints, index+2, lowest, used, assigned, error/10);
-            } else if(!assigned.containsKey(c) && !used[error%10] && error%10 >= lowest.get(c)){
+            if(!used[error%10] && error%10 >= lowest.get(c)){
                 used[error%10] = true;
                 assigned.put(c,error%10);
                 Map<Character,Integer> ret = getSolution(constraints, index+2, lowest, used, assigned, error/10);
@@ -106,20 +117,16 @@ public class Main {
                 }
             }
         } else {
-            if(assigned.containsKey(c)){
-                return getSolution(constraints, index+1, lowest, used, assigned, error+assigned.get(c));
-            } else {
-                for(int i=lowest.get(c); i<10; i++){
-                    if(!used[i]){
-                        used[i] = true;
-                        assigned.put(c, i);
-                        Map<Character,Integer> ret = getSolution(constraints, index+1, lowest, used, assigned, error+i);
-                        if(ret.size() > 0){
-                            return ret;
-                        }
-                        assigned.remove(c);
-                        used[i] = false;
+            for(int i=lowest.get(c); i<10; i++){
+                if(!used[i]){
+                    used[i] = true;
+                    assigned.put(c, i);
+                    Map<Character,Integer> ret = getSolution(constraints, index+1, lowest, used, assigned, error+i);
+                    if(ret.size() > 0){
+                        return ret;
                     }
+                    assigned.remove(c);
+                    used[i] = false;
                 }
             }
         }
