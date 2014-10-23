@@ -39,7 +39,7 @@ function solve(l,u){
 			step3[product] = filtered;
 		}
 	}
-	//I now know to
+	//I now know too
 	var step4 = [];
 	for(var sum in step2){
 		var filtered = step2[sum].filter(function(arr){
