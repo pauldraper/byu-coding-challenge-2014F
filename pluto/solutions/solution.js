@@ -1,3 +1,20 @@
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+var chunks = [];
+process.stdin.on('data', function (chunk) {
+	chunks.push(chunk);
+});
+process.stdin.once('end', function() {
+	main(chunks.join(''));
+});
+
+function main(input) {
+	var lines = input.split('\n');
+	for(var i = 1; i <= +lines[0]; i++) {
+		console.log(arithmetic(lines[i].split(' ')));
+	}
+}
+
 var arithmetic = function(words){
 	var conditions = '';
 	var longest = Math.max.apply(null,words.map(function(w){return w.length;}));
@@ -41,7 +58,7 @@ var arithmetic = function(words){
 			}).join('');
 		}).join('\n');
 	}
-	return 'no solution ' + words.join(' ');
+	return 'no solution';
 }
 
 var solve = function(conditions, lowest, index, assigned, used, error){
