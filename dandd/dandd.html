@@ -64,6 +64,12 @@
 		line-height: 1em;
 		outline: solid 1px black;
 	}
+
+	h5 {
+		text-align: left;
+		font-style: italic;
+		margin: 0;
+	}
 </style>
 
 <div>
@@ -71,62 +77,74 @@
 	<div class="section">
 		<h3>Description</h3>
 		<div class="paragraph">
-			You are locked in an epic D &amp; D battle with Death.
+			You are locked in an epic D&amp;D battle with Death.
 		</div>
 		<div class="paragraph">
-			D &amp; D is a role-playing game.
+			A combat encounter takes place in series of actions, until one side is dead or withdraws. As this is fight to the death, however, retreat is not an option. Combatants have hit points (health).  Once a combatant reaches -10 HP, he dies.
 		</div>
 		<div class="paragraph">
-			A combat encounter takes place in a series of rounds, until one side is dead or withdraws. As this is fight to the death, retreat is not an option.
+			There are two types of actions that a player can take during his turn: take cover, lose cover, or attack. Sometimes multiple actions can be performed in a row.
 		</div>
-		<div class="paragraph" style="margin-left:60px">
-			A -> AB
-			B -> A
+		<h5>Attack</h5>
+		<div class="paragraph">
+			An attack can be made with
+			<ol>
+				<li>A two-handed weapon</li>
+				<li>A one-handed weapon</li>
+				<li>Two one-handed weapons</li>
+				<li>A missle weapon (bow and arrow, javalin, ninja star, etc.)</li>
+			</ol>
 		</div>
 		<div class="paragraph">
-			Starting with one virus, A, three minutes of growth looks like this:
+			For an attack, the attacker roles a d20 (20-sided die).
+			<ol>
+				<li>If he rolls a 1, the attack fails.</li>
+				<li>If he rolls a 20, the attack succeeds.</li>
+				<li>Otherwise, take the result and add his Attack and Strength modifier. If he uses a missle weapon, use the Dexterity modifier instead of Stength. If that total exceeds the opponent's Armor class, the attack is successful. For a two-weapon attack, do this seperately for each weapon, but add -6 for the first one, and -10 for the second.</li>
+			</ol>
 		</div>
-<pre style="display:block">
-        A
-       / \
-      A   B
-     / \   \
-    A   B   A
-   / \  |  / \
-  A   B A A   B
-</pre>
+		<h5>Damage</h5>
 		<div class="paragraph">
-			At zero minutes, there is exactly 1 virus. After three minutes there are a total of 5. 
+			For each weapon that successfully hit the opponent, do the following: The base damage is determined by the weapon. If it was a non-missle weapon, add the attacker's Strength modifier. If the weapon is two-handed, increase the Strength modifier contribution by 50% (rounding up). The opponent's health is reduced by the amount of damage.
+		</div>
+		<h5>Other</h5>
+		<div class="paragraph">
+			Cover provides +4 to a combatant's armor. The bonus begins once a compatant gains cover, and lasts until he loses it.
 		</div>
 		<div class="paragraph">
-			Virius can die out. If you start with C, and it the grows rule is C ->, after one minute, there are no viruses at all.
+			To make things fair, both sides will have one two-handed weapon, two one-handed weapons, and a missle weapon.
+		</div>
+		<div class="paragraph">
+			Given all the details game between you and Death, determine the winner.
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Input</h3>
-			<div class="paragraph">
-				Each type of virus is represented by a capital letter A-Z.
-				<br>
-				The first line a sequence of one or more captial letters, representing the viruses at the beginning.
-				<br>
-				The second line is <pre>M</pre> the integer number of minutes. <pre>1 &le; M &le; 60</pre>
-				<br>
-				The third line is <pre>N</pre>, the number of types of viruses. <pre>1 &le; N &le; 26</pre>
-				<br>
-				The next N lines are the growth rules for the viruses. The first character is a capital letter, corrsponding to the virus at the beginning of the rule.
-				<br>
-				Then there is a space, followed by zero or more captial letters, corresponding to the viruses at the end of the rule.
-			</div>
 		<div class="paragraph">
-
+			The first line is five integers between 0 and 100 inclusive: your character's hit points, strength, dexterity, attack, and armor.
+			<br>
+			The second line is four positive integers, A, B, C, D, between 0 and 100 inclusive, for the damage of the your two-handed, the two one-handed, and the missle weapons (in that order).
+			<br>
+			The next two lines are the same, but for Death's character.
+		</div>
+		<div class="paragraph">
+			The fifth line is <pre>N</pre>, the number of actions in the game. <pre>1 &le; N &le; 2000</pre> 
+			<br>
+			The next <pre>N</pre> lines are the actions. Each action has multiple space-separated parameters. The first is always the comabatent, I (you), or D (death). The second is the action itself.
+			<ol>
+				<li>+ is taking cover.</li>
+				<li>- is losing cover.</li>
+				<li>A, B, C, D is an attack, corresponding to the weapon used. If there are two weapons used, they are given without space, in the order of use (e.g. CB).</li>
+			</ol>
+			In the case of an attack, there is a third parameter, the result of the d20 roll.
 		</div>
 	</div>
 
 	<div class="section">
 		<h3>Output</h3>
 		<div class="paragraph">
-			Output the number of viruses at the end of the specified period of time. At any stage of growth, there will never be more than one quintillion (1,000,000,000,000,000,000) viruses.
+			Output SURVIVE, if you win the battle, and DIE if Death wins.
 		</div>
 	</div>
 
@@ -134,25 +152,58 @@
 		<tr>
 			<th>Input</th>
 			<th>Input</th>
+			<th>Input</th>
 		</tr>
 		<tr>
 			<td>
-<pre></pre>
+<pre>0 1 0 0 0
+10 10 10 10
+1 1 1 1 1
+10 10 10 10
+3
+I +
+D A 2
+I A 2
+</pre>
 			</td>
 			<td>
-<pre></pre>
+<pre>0 1 2 0 5
+10 6 5 7
+4 2 7 8 4
+6 4 20 0
+4
+D +
+D -
+I B 5
+D BC 20
+</pre>
+			</td>
+			<td>
+<pre>1 0 1 1 1
+1 2 3 20
+1 1 1 1 3
+4 2 3 1
+3
+I D 1
+D A 10
+I D 2
+</pre>
 			</td>
 		</tr>
 		<tr>
 			<th>Output</th>
 			<th>Output</th>
+			<th>Output</th>
 		</tr>
 		<tr>
 			<td>
-<pre></pre>
+<pre>SURVIVE</pre>
 			</td>
 			<td>
-<pre></pre>
+<pre>DIE</pre>
+			</td>
+			<td>
+<pre>SURVIVE</pre>
 			</td>
 		</tr>
 	</table>
