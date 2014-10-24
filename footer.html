@@ -1,8 +1,16 @@
 <style>
   /* Main layout */
 
+	body, .menu {
+		background: #f4f4f4;
+	}
+
 	.maintable {
 		width: 860px;
+	}
+
+	form[name="fch"] {
+		display: none;
 	}
 
 	.footer {
@@ -13,38 +21,79 @@
 		border-right: none;
 	}
 
-	a[href="/BYU2014W/register"] {
-		display: none;
+	.content, .content0 {
+		background: white;
 	}
-	a[href="/BYU2014W/register"] + br {
+
+	.navigation {
+		background: white;
+	}
+
+	table.navigation {
 		display: none;
 	}
 
-	a[href="/BYU2014W/news"] {
-		display: none;
-	}
-	a[href="/BYU2014W/news"] + br {
+	.navigation + h3 {
 		display: none;
 	}
 
-	a[href="/BYU2014W/comments"] {
+	.problems:first-child {
+		margin-bottom: 10px;
+		padding: 0 100px;
+	}
+
+	.headerleft, .headerright, .headerrowleft, .headerrowright {
+		background: #000080;
+	}
+
+	.headerleft {
+		border-top-left-radius: 30px;
+	}
+
+	.headerright {
+		border-top-right-radius: 30px;
+	}
+
+	.headerrowleft {
+		border-top-left-radius: 11px;
+	}
+
+	.headerrowright {
+		border-top-right-radius: 11px;
+	}
+
+	a[href="/BYU2014F/register"] {
 		display: none;
 	}
-	a[href="/BYU2014W/comments"] + br {
+	a[href="/BYU2014F/register"] + br {
 		display: none;
 	}
 
-	a[href="/BYU2014W/embed/info/"] {
+	a[href="/BYU2014F/news"] {
 		display: none;
 	}
-	a[href="/BYU2014W/embed/info/"] + br {
+	a[href="/BYU2014F/news"] + br {
 		display: none;
 	}
 
-	a[href="/BYU2014W/embed/links/"] {
+	a[href="/BYU2014F/comments"] {
 		display: none;
 	}
-	a[href="/BYU2014W/embed/links/"] + br {
+	a[href="/BYU2014F/comments"] + br {
+		display: none;
+	}
+
+	a[href="/BYU2014F/embed/info/"] {
+		display: none;
+	}
+	a[href="/BYU2014F/embed/info/"] + br {
+		display: none;
+	}
+
+	a[href="/BYU2014F/embed/links/"] {
+		display: none;
+	}
+	a[href="/BYU2014F/embed/links/"] + br {
 		display: none;
 	}
 
@@ -59,14 +108,14 @@
 		margin: 0;
 	}
 
-	table td > h2:last-child, table + br {
+	table td > h2:last-child, table td > h2:first-child, table + br {
 		display: none;
 	}
 
 	/* Printing */
 
 	@media print {
-		.menu, .problems, .maintable > tbody > tr:first-child, .probleminfo, .prob > hr, #ccontent, .prob > table:last-child, .maintable > tbody > tr:nth-child(3), body > div, td > h2:first-child {
+		.menu, .problems, .maintable > tbody > tr:first-child, .probleminfo, .prob > hr, #ccontent, .prob > table:last-child, .maintable > tbody > tr:nth-child(3), body > div, td > h2:first-child, td > h2  + div {
 			display: none;
 		}
 	}
@@ -98,14 +147,31 @@
     }
   }, 10);
 
+	// remove fields
+	var removeFields = ['VC/C'];
+	$('.headerrow th').each(function() {
+		if(removeFields.indexOf($(this).text()) >= 0) {
+			var i = $(this).parent().children().index(this) + 1;
+			$(this).closest('table').find('th:nth-child(' + i + '), td:nth-child(' + i + ')').remove();
+		}
+	});
+
+	// remove options
+	var removeOptions = ['PDF', 'PS', 'TODO problems']
+	$('tr.navigation td').each(function() {
+		if(removeOptions.indexOf($(this).text()) >= 0) {
+			$(this).remove();
+		}
+	});
+
   // problem title
-	var title = $('td > h2 + h1');
+	var title = $('.content0 h1');
 	title.text(title.text().split(' ').slice(1).join(' '));
 	
 	// side menu
-	$('.menu a[href="/BYU2014W/embed/rules/"]')
-		.after('<br><br><a href="/BYU2014W/embed/solutions/">solutions</a>')
-		.after('<br><a href="/BYU2014W/embed/samples/">samples</a>');
+	$('.menu a[href="/BYU2014F/embed/rules/"]')
+		.after('<br><br><a href="/BYU2014F/embed/solutions/">solutions</a>')
+		.after('<br><a href="/BYU2014F/embed/samples/">samples</a>');
 
 	swapSheet = function() {};
 	setWidth = function() {};
@@ -114,6 +180,6 @@
 <span style="font-size:16px">
 	Sponsored by
 	<a target="blank" href="https://www.golucid.co/jobs">
-		<img src="/BYU2014F/content/lucid.png" style="height:25px;vertical-align:middle">
+		<img src="/BYU2014F/content/lucid.png" style="height:36px;margin-top:-5px;vertical-align:middle">
 	</a>
 </span>
